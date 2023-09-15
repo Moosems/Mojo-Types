@@ -1,6 +1,6 @@
 # Mojo-Types
 
-This repo contains some useful types and functions to use in Mojo. To use a type/function, simply take the file from its folder and import it into your project. Documentation on each type can be found in the respective README of the folder.
+This repo contains some useful types and functions to use in Mojo. To use a type/function, simply copy the `types` folder and import it into your project. Documentation on each type can be found in the respective README of the folder.
 <br>
 Documentation should follow a style similar to that used in the official [Mojo Docs](https://docs.modular.com/mojo/).
 
@@ -13,3 +13,5 @@ To update docs: open a PR with your fixes and they will be reviewed shortly ther
 ## Here are the types/functions currently in the repo:
  - ### `Array` (type)
  - ### `input()` (function)
+ - ### `Pair` (type)
+ - ### `DodgyString` (type) (found in `dodgy`)
