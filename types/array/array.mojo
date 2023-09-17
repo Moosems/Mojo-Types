@@ -1,11 +1,11 @@
+from memory.unsafe import Pointer
 from memory.memory import memcpy
-from utils.vector import DynamicVector
 
 struct Array[T: AnyType]:
     var real_list: Pointer[T]
     var list_len: Int
     var capacity: Int
-    
+
     fn __init__(inout self, default_value: T, capacity: Int = 10) -> None:
         self.list_len = 0
         self.capacity = capacity * 2
@@ -28,7 +28,19 @@ struct Array[T: AnyType]:
             print("Warning: you're trying to set an index out of bounds, doing nothing")
             return
         self.real_list.store(loc, item)
-        
+
+    fn __del__(owned self) -> None:
+        self.real_list.free()
+
+    fn __len__(borrowed self) -> Int:
+        return self.list_len
+
+    fn __copyinit__(inout self, other: Self) -> None:
+        self.list_len = other.list_len
+        self.capacity = self.list_len * 2
+        self.real_list = Pointer[T].alloc(self.capacity)
+        memcpy[T](self.real_list, other.real_list, self.list_len)
+
     fn push_back(inout self, item: T) -> None:
         # If list has grown beyond allocated capacity, allocate a new list
         if self.list_len >= self.capacity:
@@ -38,15 +50,9 @@ struct Array[T: AnyType]:
             self.real_list.free()
             self.real_list = new_list
             self.capacity = new_capacity
-            
+
         self.real_list.store(self.list_len, item)
         self.list_len += 1
-
-    fn __copyinit__(inout self, other: Self) -> None:
-        self.list_len = other.list_len
-        self.capacity = self.list_len * 2
-        self.real_list = Pointer[T].alloc(self.capacity)
-        memcpy[T](self.real_list, other.real_list, self.list_len)
 
     fn apply_function[T2: AnyType, func: fn(T) -> T2](owned self) -> Array[T2]:
         var result = Array[T2](self.capacity)

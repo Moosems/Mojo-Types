@@ -3,6 +3,11 @@
 <br>
 
 Implements the `Array`` struct.
+
+### Purpose:
+
+This struct is used when you want to store a dynamic array of values.
+
 <br>
 This is NOT a Mojo builtin, so it needs to be imported
 <br>

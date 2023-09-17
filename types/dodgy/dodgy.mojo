@@ -15,3 +15,6 @@ struct DodgyString:
     fn to_string(self) -> String:
         let s = String(self.data, self.len)
         return s
+
+    fn __del__(self):
+        self.data.free()

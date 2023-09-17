@@ -3,6 +3,10 @@
 <br>
 
 Implements the `input` function.
+
+### **Purpose:**
+This function is used when you want to get input from the user.
+
 <br>
 This is NOT a Mojo builtin, so it needs to be imported
 <br>

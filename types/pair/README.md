@@ -3,6 +3,10 @@
 <br>
 
 Implements the `Pair` struct.
+
+### **Purpose:**
+This struct is used when you want to store a pair of values.
+
 <br>
 This is NOT a Mojo builtin, so it needs to be imported
 <br>
