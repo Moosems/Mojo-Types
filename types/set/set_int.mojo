@@ -4,9 +4,7 @@ from math import abs
 
 
 struct SetInt:
-    alias resize_factor_up = 0.5
-    alias resize_factor_down = 0.25
-    alias min_size = 11
+    alias min_size = 10
 
     var size: Int
     var _filled: Int
@@ -15,6 +13,14 @@ struct SetInt:
 
     fn __init__(inout self):
         self.size = self.min_size
+        self._filled = 0
+        self.flag_for_zero_value = False
+
+        self.data = Pointer[Int].alloc(self.min_size)
+        memset_zero(self.data, self.min_size)
+
+    fn __init__(inout self, new_min_size: Int):
+        self.size = new_min_size
         self._filled = 0
         self.flag_for_zero_value = False
 
@@ -79,10 +85,10 @@ struct SetInt:
         let capacity_ratio = self._filled / self.size  # we first check the capacity ratio before resizing (So how many values we have in the array compared to the size of the array)
 
         # if the capacity ratio is less than the resize factor down (0.25) we reduce the size of the array
-        if capacity_ratio < self.resize_factor_down and self.size // 2 >= self.min_size:
+        if capacity_ratio < .25 and self.size // 2 >= self.min_size:
             self._resize_array(self.size // 2)
         # if the capacity ratio is more than the resize factor up (0.5) we increase the size of the array
-        if capacity_ratio > self.resize_factor_up:
+        if capacity_ratio > 0.5:
             self._resize_array(self.size * 2 + 1)
 
     fn _resize_array(inout self, new_size: Int):
@@ -96,7 +102,7 @@ struct SetInt:
         self.size = new_size
 
     fn print_all(self):
-        print("[")
+        print_no_newline("[")
         for i in range(self.size):
             if self.data[i] != 0:
                 print_no_newline(self.data[i], ",")

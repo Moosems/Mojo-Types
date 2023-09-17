@@ -26,7 +26,7 @@ This is NOT a Mojo builtin, so it needs to be imported
 
 > `fn __init__(inout self) -> None:`
 
-Constructs a new `SetInt` with a default capacity (capacity_default = 11).
+Constructs a new `SetInt` with a default capacity (capacity_default = 10).
 
 ##### **Args:**
 

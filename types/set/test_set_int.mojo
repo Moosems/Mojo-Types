@@ -1,4 +1,4 @@
-from set import SetInt
+from set_int import SetInt
 
 
 fn test_set():
@@ -20,6 +20,7 @@ fn test_set():
             count += 1
 
     print("Values where added correctly:", count == 20)
+    test.print_all()
 
     for i in range(5, 10):
         test.remove(i)
