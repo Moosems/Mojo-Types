@@ -1,3 +1,5 @@
+from array import Array
+
 fn test_array() -> None:
     let a = Array[Int](0, 10)
     for i in range(10):
