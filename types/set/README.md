@@ -2,7 +2,11 @@
 
 _Module_
 
-Implements a very simple `SetInt` struct. This struct can be use when you want to store unique values (no duplicates), and you want to be able to check if a value exists in O(1) amortized time
+Implements a very simple `SetInt` struct.
+
+### Purpose:
+
+This struct is used when you want to store unique values (no duplicates), and you want to be able to check if a value exists in O(1) amortized time
 
 <br>
 This is NOT a Mojo builtin, so it needs to be imported
