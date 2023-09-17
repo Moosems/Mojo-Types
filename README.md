@@ -15,3 +15,4 @@ To update docs: open a PR with your fixes and they will be reviewed shortly ther
  - ### `input()` (function)
  - ### `Pair` (type)
  - ### `DodgyString` (type) (found in `dodgy`)
+ - ### `SetInt` (type) (found in `set`)
