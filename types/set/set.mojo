@@ -1,4 +1,4 @@
-from memory.unsafe import DTypePointer
+from memory.unsafe import Pointer
 from memory import memcpy, memset_zero
 from math import abs
 
@@ -75,10 +75,13 @@ struct SetInt:
         self.__resize()
 
     fn __resize(inout self):
-        let capacity_ratio = self._filled / self.size
+        # in the array we always want to have more space than the number of elements in the set to reduce collisions
+        let capacity_ratio = self._filled / self.size  # we first check the capacity ratio before resizing (So how many values we have in the array compared to the size of the array)
 
+        # if the capacity ratio is less than the resize factor down (0.25) we reduce the size of the array
         if capacity_ratio < self.resize_factor_down and self.size // 2 >= self.min_size:
             self._resize_array(self.size // 2)
+        # if the capacity ratio is more than the resize factor up (0.5) we increase the size of the array
         if capacity_ratio > self.resize_factor_up:
             self._resize_array(self.size * 2 + 1)
 

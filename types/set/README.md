@@ -82,7 +82,7 @@ Remove a value from `SetInt`.
 
 ##### **Args:**
 
--   value(`Int`): The value to remove.
+-   value(`Int`): The unique value to remove.
 
 ##### **Returns:**
 
@@ -105,12 +105,9 @@ Print all values in `SetInt`.
 ### **Example:**
 
 ```mojo
-from types.array import Array
-from type.dodgy import DodgyString
+from set import SetInt
 
 fn main():
-    from set import SetInt
-
     var set = SetInt()
 
     set.add(1)
