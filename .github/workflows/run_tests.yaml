@@ -23,6 +23,7 @@ jobs:
 
     - name: Install Mojo
       run: |
+        modular install mojo
         modular clean
         modular install mojo
 
