@@ -24,13 +24,11 @@ jobs:
     - name: Install Mojo
       run: |
         modular install mojo
-        modular clean
-        modular install mojo
 
     - name: Add to PATH
       run: |
-        echo 'export MODULAR_HOME="$HOME/.modular"' >> ~/.bashrc 
-        echo 'export PATH="$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH"' >> ~/.bashrc
+        echo 'export MODULAR_HOME="/home/runner/.modular"' >> ~/.bashrc
+        echo 'export PATH="/home/runner/.modular/pkg/packages.modular.com_mojo/bin:$PATH"' >> ~/.bashrc
         source ~/.bashrc
 
     - name: Run tests
