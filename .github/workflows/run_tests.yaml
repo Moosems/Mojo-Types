@@ -16,16 +16,13 @@ jobs:
 
     - name: Install modular
       run: |
-        keyring_location=/usr/share/keyrings/modular-installer-archive-keyring.gpg &&
-        curl -1sLf 'https://dl.modular.com/bBNWiLZX5igwHXeu/installer/gpg.0E4925737A3895AD.key' |  gpg --dearmor >> ${keyring_location} &&
-        echo "deb [signed-by=${keyring_location}] https://dl.modular.com/bBNWiLZX5igwHXeu/installer/deb/debian stable main" | sudo tee /etc/apt/sources.list.d/modular-installer.list &&
-        sudo apt-get update &&
-        sudo apt-get install -y modular
+        curl https://get.modular.com | \
+        MODULAR_AUTH=${{ secrets.AUTH_TOKEN }} \
+        sh -
 
 
     - name: Install Mojo
       run: |
-        modular auth ${{ secrets.AUTH_TOKEN }} &&
         modular install mojo
 
     - name: Run tests
