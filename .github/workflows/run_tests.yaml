@@ -1,0 +1,31 @@
+name: Run Mojo tests
+
+on:
+  push:
+    branches:
+      - all
+
+jobs:
+  run-tests:
+    name: Run tests
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install modular
+      run: |
+        apt-get install -y apt-transport-https &&
+        keyring_location=/usr/share/keyrings/modular-installer-archive-keyring.gpg &&
+        curl -1sLf 'https://dl.modular.com/bBNWiLZX5igwHXeu/installer/gpg.0E4925737A3895AD.key' |  gpg --dearmor >> ${keyring_location} &&
+        curl -1sLf 'https://dl.modular.com/bBNWiLZX5igwHXeu/installer/config.deb.txt?distro=debian&codename=wheezy' > /etc/apt/sources.list.d/modular-installer.list &&
+        apt-get update &&
+        apt-get install -y modular
+
+    - name: Install Mojo
+      run: |
+        modular auth ${{ secrets.AUTH_TOKEN }} &&
+        modular install mojo
+
+    - name: Run tests
+      run: mojo tests.mojo
