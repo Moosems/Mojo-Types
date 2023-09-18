@@ -3,6 +3,11 @@
 <br>
 
 Implements the `DodgyString` struct (will include more dodgy types in the future).
+
+## **Purpose:**
+
+This struct is used when you want to store a string in certain structs (e.g. `Array`).
+
 <br>
 This is NOT a Mojo builtin, so it needs to be imported
 <br>

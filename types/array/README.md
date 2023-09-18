@@ -3,6 +3,11 @@
 <br>
 
 Implements the `Array`` struct.
+
+### Purpose:
+
+This struct is used when you want to store a dynamic array of values.
+
 <br>
 This is NOT a Mojo builtin, so it needs to be imported
 <br>
@@ -119,4 +124,4 @@ fn main():
     fn str_to_int(str: DodgyString) -> Int:
         return str.to_string().to_int()
     let ints = dodgystrings.apply_function[Int, str_to_int]()
-    let ints = Array[Int](1), array_capacity)
+    let ints = Array[Int](1, array_capacity))
