@@ -23,6 +23,7 @@ jobs:
 
     - name: Install Mojo
       run: |
+        modular clean
         modular install mojo
 
     - name: Add to PATH
