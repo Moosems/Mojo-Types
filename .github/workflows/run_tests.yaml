@@ -13,9 +13,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Keep sudo
+      run: sudo -s
+
     - name: Install modular
       run: |
-        sudo apt-get install -y apt-transport-https &&
+        apt-get install -y apt-transport-https &&
         keyring_location=/usr/share/keyrings/modular-installer-archive-keyring.gpg &&
         curl -1sLf 'https://dl.modular.com/bBNWiLZX5igwHXeu/installer/gpg.0E4925737A3895AD.key' |  gpg --dearmor >> ${keyring_location} &&
         curl -1sLf 'https://dl.modular.com/bBNWiLZX5igwHXeu/installer/config.deb.txt?distro=debian&codename=wheezy' > /etc/apt/sources.list.d/modular-installer.list &&
