@@ -3,7 +3,7 @@ name: Run Mojo tests
 on:
   push:
     branches:
-      - all
+      - "*"
 
 jobs:
   run-tests:
