@@ -10,6 +10,9 @@ jobs:
     name: Run tests
     runs-on: ubuntu-latest
 
+    env:
+      RUNNER_ALLOW_RUNASROOT=1 ./config.sh --token asdlkjfasdlkj
+
     steps:
     - uses: actions/checkout@v2
 
