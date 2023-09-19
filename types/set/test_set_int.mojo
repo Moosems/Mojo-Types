@@ -30,4 +30,4 @@ fn test_set():
         if test.contains(i):
             count += 1
 
-    print("Values where removed correctly:", count == 15)
+    print("Values were removed correctly:", count == 15)

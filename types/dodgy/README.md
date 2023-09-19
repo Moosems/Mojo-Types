@@ -50,7 +50,7 @@ Converts the `DodgyString` to a `String`.
 
 ### **Example:**
 ```mojo
-from types.dodgy.dodgy import DodgyString
+from types.dodgy import DodgyString
 
 fn main():
     let dodgy = DodgyString("Hello, world!")
