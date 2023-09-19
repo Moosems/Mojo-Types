@@ -6,7 +6,7 @@ from array.test_array import test_array
 from set.test_set_int import test_set
 
 fn main():
-    print(Starting tests")
+    print("Starting tests")
     test_array()
     test_set()
     print("Test complete")
