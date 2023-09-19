@@ -1,4 +1,4 @@
-from set_int import SetInt
+from .set_int import SetInt
 
 
 fn test_set():
