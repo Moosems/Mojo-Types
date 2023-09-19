@@ -16,31 +16,14 @@ jobs:
 
     - name: Install modular
       run: |
-        curl https://get.modular.com | \
-        MODULAR_AUTH=${{ secrets.AUTH_TOKEN }} \
-        sh -
+        curl https://get.modular.com | MODULAR_AUTH=${{ secrets.AUTH_TOKEN }} sh -
 
 
     - name: Install Mojo
-      run: |
-        modular install mojo
+      run: modular install mojo
 
     - name: Add to PATH
-      run: |
-        # echo "{path}" >> $GITHUB_PATH
-        # https://stackoverflow.com/a/68214331/17053202
-        echo "/home/runner/.modular/pkg/packages.modular.com_mojo/bin" >> $GITHUB_PATH
-        # echo 'MODULAR_HOME="/home/runner/.modular"' >> $GITHUB_PATH
-        # echo 'PATH="/home/runner/.modular/pkg/packages.modular.com_mojo/bin:$PATH"' >> $GITHUB_PATH
-        # echo 'export MODULAR_HOME="/home/runner/.modular"' >> ~/.bashrc
-        # echo 'export PATH="/home/runner/.modular/pkg/packages.modular.com_mojo/bin:$PATH"' >> ~/.bashrc
-        # source ~/.bashrc
-        # echo 'MODULAR_HOME="/home/runner/.modular"' >> ~/.bashrc
-        # echo 'PATH="/home/runner/.modular/pkg/packages.modular.com_mojo/bin:$PATH"' >> ~/.bashrc
-        source ~/.bashrc
-        # echo 'export MODULAR_HOME="/home/runner/.modular"' >> ~/.zshrc
-        # echo 'export PATH="/home/runner/.modular/pkg/packages.modular.com_mojo/bin:$PATH"' >> ~/.zshrc
-        # source ~/.zshrc
+      run: echo "/home/runner/.modular/pkg/packages.modular.com_mojo/bin" >> $GITHUB_PATH
 
     - name: Run tests
       run: mojo tests.mojo
