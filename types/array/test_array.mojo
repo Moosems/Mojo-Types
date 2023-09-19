@@ -1,4 +1,4 @@
-from array import Array
+from .array import Array
 
 fn test_array() -> None:
     let a = Array[Int](0, 10)
