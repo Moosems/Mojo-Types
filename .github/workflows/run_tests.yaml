@@ -20,16 +20,13 @@ jobs:
         MODULAR_AUTH=${{ secrets.AUTH_TOKEN }} \
         sh -
 
-
-    - name: Install Mojo
-      run: |
-        modular install mojo
-
     - name: Add to PATH
       run: |
-        echo 'export MODULAR_HOME="/home/runner/.modular"' >> ~/.bashrc
-        echo 'export PATH="/home/runner/.modular/pkg/packages.modular.com_mojo/bin:$PATH"' >> ~/.bashrc
-        source ~/.bashrc
+        echo 'export MODULAR_HOME="/home/runner/.modular"' >> $GITHUB_ENV
+        echo 'export PATH="$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH"' >> $GITHUB_ENV
+
+    - name: Set Environment Variables
+      run: echo "source $GITHUB_ENV" >> $HOME/.bashrc
 
     - name: Run tests
       run: mojo tests.mojo
