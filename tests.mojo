@@ -3,12 +3,9 @@ from types.array.test_array import test_array
 from types.set.test_set_int import test_set
 
 # Test basic imports
-from types.array import Array
-from types.dodgy import DodgyString
-from types.input import input
-from types.pair import Pair
-from types.set import SetInt
+from types import Array, DodgyString, input, Pair, SetInt
 
+# Run tests
 fn main():
     print("Starting tests")
     print("Basic imports succeeded")
