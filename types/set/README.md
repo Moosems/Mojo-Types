@@ -109,7 +109,7 @@ Print all values in `SetInt`.
 ### **Example:**
 
 ```mojo
-from types.set.set_int import SetInt
+from types.set import SetInt
 
 fn main():
     var set = SetInt()
