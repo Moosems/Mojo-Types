@@ -24,8 +24,6 @@ jobs:
     - name: Install Mojo
       run: |
         modular install mojo
-        modular clean
-        modular install
 
     - name: Add to PATH
       run: |
