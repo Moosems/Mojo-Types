@@ -28,8 +28,10 @@ jobs:
     - name: Add to PATH
       run: |
         # $GITHUB_PATH
-        echo 'export MODULAR_HOME="/home/runner/.modular"' >> $GITHUB_PATH
-        echo 'export PATH="/home/runner/.modular/pkg/packages.modular.com_mojo/bin:$PATH"' >> $GITHUB_PATH
+        # echo 'export MODULAR_HOME="/home/runner/.modular"' >> $GITHUB_PATH
+        # echo 'export PATH="/home/runner/.modular/pkg/packages.modular.com_mojo/bin:$PATH"' >> $GITHUB_PATH
+        echo 'MODULAR_HOME="/home/runner/.modular"' >> $GITHUB_PATH
+        echo 'PATH="/home/runner/.modular/pkg/packages.modular.com_mojo/bin:$PATH"' >> $GITHUB_PATH
         # echo 'export MODULAR_HOME="/home/runner/.modular"' >> ~/.bashrc
         # echo 'export PATH="/home/runner/.modular/pkg/packages.modular.com_mojo/bin:$PATH"' >> ~/.bashrc
         # source ~/.bashrc
