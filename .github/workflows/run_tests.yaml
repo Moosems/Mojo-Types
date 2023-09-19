@@ -30,6 +30,9 @@ jobs:
         echo 'export MODULAR_HOME="/home/runner/.modular"' >> ~/.bashrc
         echo 'export PATH="/home/runner/.modular/pkg/packages.modular.com_mojo/bin:$PATH"' >> ~/.bashrc
         source ~/.bashrc
+        echo 'export MODULAR_HOME="/home/runner/.modular"' >> ~/.zshrc
+        echo 'export PATH="/home/runner/.modular/pkg/packages.modular.com_mojo/bin:$PATH"' >> ~/.zshrc
+        source ~/.zshrc
 
     - name: Run tests
       run: mojo tests.mojo
