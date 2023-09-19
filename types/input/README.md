@@ -62,7 +62,7 @@ It is a wrapper around the Python `input` function.
 
 ### **Example:**
 ```mojo
-from types.input import input
+from types.input.input import input
 
 fn main():
     let user_input: String = input("Enter something: ")

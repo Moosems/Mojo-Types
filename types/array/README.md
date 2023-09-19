@@ -115,8 +115,8 @@ Applies a function to every element in the array.
 
 ### **Example:**
 ```mojo
-from types.array import Array
-from type.dodgy import DodgyString
+from types.array.array import Array
+from types.dodgy.dodgy import DodgyString
 
 fn main():
     let array_capacity = 5

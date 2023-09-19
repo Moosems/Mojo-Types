@@ -83,7 +83,7 @@ Applies a function to the pair.
 
 ### **Example:**
 ```mojo
-from types.pair import Pair
+from types.pair.pair import Pair
 
 fn main():
     let pair = Pair[Int, FloatLiteral](1, 3.14)
