@@ -1,9 +1,6 @@
-# Import all parent folders that contain tests
-from types import array, set
-
 # Import all test functions from test files
-from array.test_array import test_array
-from set.test_set_int import test_set
+from types.array.test_array import test_array
+from types.set.test_set_int import test_set
 
 fn main():
     print("Starting tests")
