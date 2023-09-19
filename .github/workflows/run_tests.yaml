@@ -25,16 +25,19 @@ jobs:
       run: |
         modular install mojo
         modular clean
-        modular install mojo
+        modular install
 
     - name: Add to PATH
       run: |
-        echo 'export MODULAR_HOME="/home/runner/.modular"' >> ~/.bashrc
-        echo 'export PATH="/home/runner/.modular/pkg/packages.modular.com_mojo/bin:$PATH"' >> ~/.bashrc
-        source ~/.bashrc
-        echo 'export MODULAR_HOME="/home/runner/.modular"' >> ~/.zshrc
-        echo 'export PATH="/home/runner/.modular/pkg/packages.modular.com_mojo/bin:$PATH"' >> ~/.zshrc
-        source ~/.zshrc
+        # $GITHUB_PATH
+        echo 'export MODULAR_HOME="/home/runner/.modular"' >> $GITHUB_PATH
+        echo 'export PATH="/home/runner/.modular/pkg/packages.modular.com_mojo/bin:$PATH"' >> $GITHUB_PATH
+        # echo 'export MODULAR_HOME="/home/runner/.modular"' >> ~/.bashrc
+        # echo 'export PATH="/home/runner/.modular/pkg/packages.modular.com_mojo/bin:$PATH"' >> ~/.bashrc
+        # source ~/.bashrc
+        # echo 'export MODULAR_HOME="/home/runner/.modular"' >> ~/.zshrc
+        # echo 'export PATH="/home/runner/.modular/pkg/packages.modular.com_mojo/bin:$PATH"' >> ~/.zshrc
+        # source ~/.zshrc
 
     - name: Run tests
       run: mojo tests.mojo
