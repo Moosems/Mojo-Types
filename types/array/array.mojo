@@ -6,21 +6,20 @@ struct Array[T: AnyType]:
     var list_len: Int
     var capacity: Int
 
-    fn __init__(inout self, default_value: T, capacity: Int = 10) -> None:
+    fn __init__(inout self, default_value: T, owned capacity: Int = 10) -> None:
+        if capacity < 1:
+            print("Capacity must be positive integer above one, modifying capacity to 1")
+            capacity = 1
         self.list_len = 0
         self.capacity = capacity * 2
         self.real_list = Pointer[T].alloc(self.capacity)
         for i in range(capacity):
             self.push_back(default_value)
 
-    fn __init__(inout self, capacity: Int = 10) -> None:
-        self.list_len = 0
-        self.capacity = capacity * 2
-        self.real_list = Pointer[T].alloc(self.capacity)
-
     fn __getitem__(borrowed self, i: Int) -> T:
         if i >= self.list_len:
             print("Warning: you're trying to get an index out of bounds, memory violation")
+            return self.real_list.load(0)
         return self.real_list.load(i)
 
     fn __setitem__(borrowed self, loc: Int, item: T):
@@ -55,7 +54,7 @@ struct Array[T: AnyType]:
         self.list_len += 1
 
     fn apply_function[T2: AnyType, func: fn(T) -> T2](owned self) -> Array[T2]:
-        var result = Array[T2](self.capacity)
+        var result = Array[T2](func(self[0]), self.capacity)
         result.list_len = self.list_len
         for i in range(self.list_len):
             result[i] = func(self[i])
