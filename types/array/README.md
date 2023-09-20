@@ -51,16 +51,6 @@ Constructs a new `Array` with a default value and a capacity.
 ##### **Returns:**
  - `None`
 
-#### `__init__`
-> `fn __init__(inout self, capacity: Int = 10) -> None:`
-Constructs a new `Array` with a capacity.
-
-##### **Args:**
- - capacity (`Int`): The initial capacity of the array
-
-##### **Returns:**
- - `None`
-
 #### `__getitem__`
 > `fn __getitem__(borrowed self, i: Int) -> T:`
 Gets an element from the array.
