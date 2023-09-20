@@ -51,6 +51,16 @@ Constructs a new `Array` with a default value and a capacity.
 ##### **Returns:**
  - `None`
 
+#### `__init__`
+> `fn __init__[*Ts: AnyType](inout self, given_list: ListLiteral[Ts]) -> None:`
+Constructs a new `Array` from a list literal.
+
+##### **Args:**
+ - given_list (`ListLiteral[Ts]`): The list literal to construct the array from
+
+##### **Returns:**
+ - `None`
+
 #### `__getitem__`
 > `fn __getitem__(borrowed self, i: Int) -> T:`
 Gets an element from the array.
@@ -72,15 +82,25 @@ Sets an element in the array.
 ##### **Returns:**
  - `None`
 
-#### `push_back`
-> `fn push_back(inout self, item: T):`
-Adds an element to the end of the array.
+#### `__del__`
+> `fn __del__(owned self):`
+Frees the memory used by the array.
 
 ##### **Args:**
- - item (`T`): The element to add
+ - `None`
 
 ##### **Returns:**
  - `None`
+
+#### `__len__`
+> `fn __len__(borrowed self) -> Int:`
+Gets the length of the array.
+
+##### **Args:**
+ - `None`
+
+##### **Returns:**
+ - `Int`: The length of the array
 
 #### `__copyinit__`
 > `fn __copyinit__(inout self, other: Self):`
@@ -92,6 +112,46 @@ Copies the contents of another `Array` into this one.
 ##### **Returns:**
  - `None`
 
+#### `__moveinit__`
+> `fn __moveinit__(inout self, owned other: Self):`
+Moves the contents of another `Array` into this one.
+
+##### **Args:**
+ - other (`Self`): The `Array` to move
+
+##### **Returns:**
+ - `None`
+
+#### `push_back`
+> `fn push_back(inout self, item: T):`
+Adds an element to the end of the array.
+
+##### **Args:**
+ - item (`T`): The element to add
+
+##### **Returns:**
+ - `None`
+
+#### `append`
+> `fn append(inout self, item: T):`
+Adds an element to the end of the array (thin wrapper around `push_back`).
+
+##### **Args:**
+ - item (`T`): The element to add
+
+##### **Returns:**
+- `None`
+
+#### `__iter__`
+> `fn __iter__(self) -> ListIterator[T]:`
+Gets an iterator for the array.
+
+##### **Args:**
+ - `None`
+
+##### **Returns:**
+ - `ListIterator[T]`: The iterator
+
 #### `apply_function`
 > `fn apply_function[T2: AnyType, func: fn(T) -> T2](owned self) -> Array[T2]:`
 Applies a function to every element in the array.
@@ -101,6 +161,16 @@ Applies a function to every element in the array.
 
 ##### **Returns:**
  - `Array[T2]`: The new array with the function applied to every element
+
+#### `remove_at`
+> `fn remove_at(inout self, loc: Int):`
+Removes an element from the array.
+
+##### **Args:**
+ - loc (`Int`): The index of the element to remove
+
+##### **Returns:**
+ - `None`
 <br>
 
 ### **Example:**
@@ -115,3 +185,6 @@ fn main():
         return str.to_string().to_int()
     let ints = dodgystrings.apply_function[Int, str_to_int]()
     let ints = Array[Int](1, array_capacity))
+
+    let floats: Array[FloatLiteral] = [3.14, .3000000004]
+```
