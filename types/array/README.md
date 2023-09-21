@@ -52,7 +52,7 @@ Constructs a new `Array` with a default value and a capacity.
  - `None`
 
 #### `__init__`
-> `fn __init__[*Ts: AnyType](inout self, given_list: ListLiteral[Ts]) -> None:`
+> `fn __init__[*Ts: AnyType](inout self, owned given_list: ListLiteral[Ts]) -> None:`
 Constructs a new `Array` from a list literal.
 
 ##### **Args:**

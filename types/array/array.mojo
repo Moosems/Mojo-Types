@@ -6,12 +6,9 @@ struct Array[T: AnyType]:
     var list_len: Int
     var capacity: Int
 
-    fn __init__(inout self, default_value: T, owned capacity: Int = 10) -> None:
-        if capacity < 1:
-            print("Capacity must be positive integer above one, modifying capacity to 1")
-            capacity = 1
-        self.list_len = capacity
-        self.capacity = capacity * 2
+    fn __init__(inout self, default_value: T, capacity: Int = 10) -> None:
+        self.list_len = capacity if capacity > 0 else 1
+        self.capacity = self.list_len * 2
         self.real_list = Pointer[T].alloc(self.capacity)
         for i in range(self.list_len):
             self[i] = default_value
