@@ -1,3 +1,6 @@
+from memory import memcpy
+
+
 @value
 @register_passable("trivial")
 struct DodgyString:
@@ -13,5 +16,8 @@ struct DodgyString:
         return DodgyString(p, l)
 
     fn to_string(self) -> String:
-        let s = String(self.data, self.len)
-        return s
+        let ptr = Pointer[Int8]().alloc(self.len)
+
+        memcpy(ptr, self.data, self.len)
+
+        return String(ptr, self.len)
