@@ -12,6 +12,7 @@ To update docs: open a PR with your fixes and they will be reviewed shortly ther
 
 ## Here are the types/functions currently in the repo:
  - ### `Array` (type)
+ - ### `Matrix` (type)
  - ### `input()` (function)
  - ### `Pair` (type)
  - ### `DodgyString` (type) (found in `dodgy`)

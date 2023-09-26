@@ -3,3 +3,4 @@ from .dodgy import DodgyString
 from .input import input
 from .pair import Pair
 from .set import SetInt
+from .matrix import Matrix
