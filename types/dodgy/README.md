@@ -56,6 +56,16 @@ Converts the `DodgyString` to a `String`.
 ##### **Returns:**
  - `String`: The `String` representation of the `DodgyString`
 
+#### `to_string_ref`
+> `fn to_string_ref(self) -> StringRef:`
+Converts the `DodgyString` to a `StringRef`.
+
+##### **Args:**
+ - self (`DodgyString`): The `DodgyString` to convert
+
+##### **Returns:**
+ - `StringRef`: The `StringRef` representation of the `DodgyString`
+
 <br>
 
 ### **Example:**
