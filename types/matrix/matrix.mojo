@@ -177,3 +177,14 @@ struct Matrix:
             for j in range(self.width):
                 new_matrix[i, j] = func(self[i, j])
         return new_matrix
+
+    fn print_all(borrowed self) -> None:
+        print("[")
+        for i in range(self.height):
+            print_no_newline("    [")
+            for j in range(self.width):
+                print_no_newline(self[i, j])
+                if j != self.width - 1:
+                    print_no_newline(", ")
+            print("]," if i != self.height - 1 else "]")
+        print("]")

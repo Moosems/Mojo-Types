@@ -1,8 +1,9 @@
 from .matrix import Matrix
 
 fn test_matrix() -> None:
-    var test_matrix: Matrix = Matrix(Float32 (3.14), 2, 2)
-    let second_test_matrix: Matrix = Matrix(Float32 (3.14), 2, 2)
+    var test_matrix: Matrix = Matrix(Float32(3.14), 2, 2)
+    test_matrix.print_all()
+    let second_test_matrix: Matrix = Matrix(Float32(3.14), 2, 2)
     debug_assert(not test_matrix < second_test_matrix, "Should not be less")
     debug_assert(not test_matrix > second_test_matrix, "Should not be more")
     debug_assert(test_matrix == second_test_matrix, "Should be equal")
