@@ -2,19 +2,10 @@ from memory.unsafe import Pointer
 
 struct Matrix:
     """Simple 2D Matrix that uses Float32"""
-    var data: Pointer[Float32] # Get around traits limitation,
-    # in reality it just contains T.
+    # Expects when doing math with other Matrices that they all have the same dimensions
+    var data: Pointer[Float32]
     var height: Int
     var width: Int
-    # [
-    #     [item, item, item],
-    #     [item, item, item]
-    # ]
-    # 2x3
-    # height: 2
-    # width: 3
-    # In reality however, this is just a single long Pointer that
-    # uses some simple math to manage memory.
     var total_items: Int
 
     fn __init__(inout self, owned default_value: Float32, height: Int, width: Int) -> None:
@@ -74,7 +65,6 @@ struct Matrix:
         memcpy[Float32](self.data, other.data, self.total_items)
 
     fn __lt__(borrowed self, rhs: Matrix) -> Bool:
-        # Expects the other Matrix has the same dimensions
         for i in range(self.height):
             for j in range(self.width):
                 if self[i, j] < rhs[i, j]:
@@ -82,7 +72,6 @@ struct Matrix:
         return False
 
     fn __gt__(borrowed self, rhs: Matrix) -> Bool:
-        # Expects the other Matrix has the same dimensions
         for i in range(self.height):
             for j in range(self.width):
                 if self[i, j] > rhs[i, j]:
@@ -90,7 +79,6 @@ struct Matrix:
         return False
 
     fn __eq__(borrowed self, rhs: Matrix) -> Bool:
-        # Expects the other Matrix has the same dimensions
         for i in range(self.height):
             for j in range(self.width):
                 let self_val: Float32 = self[i, j]
@@ -100,19 +88,15 @@ struct Matrix:
         return True
 
     fn __ne__(borrowed self, rhs: Matrix) -> Bool:
-        # Expects the other Matrix has the same dimensions
         return not self == rhs
 
     fn __ge__(borrowed self, rhs: Matrix) -> Bool:
-        # Expects the other Matrix has the same dimensions
         return self > rhs or self == rhs
 
     fn __le__(borrowed self, rhs: Matrix) -> Bool:
-        # Expects the other Matrix has the same dimensions
         return self < rhs or self == rhs
 
     fn __add__(borrowed self, rhs: Matrix) -> Matrix:
-        # Expects the other Matrix has the same dimensions
         var new_matrix: Matrix = Matrix(Float32(0.0), self.height, self.width)
         for i in range(self.height):
             for j in range(self.width):
@@ -120,7 +104,6 @@ struct Matrix:
         return new_matrix
 
     fn __sub__(borrowed self, rhs: Matrix) -> Matrix:
-        # Expects the other Matrix has the same dimensions
         var new_matrix: Matrix = Matrix(Float32(0.0), self.height, self.width)
         for i in range(self.height):
             for j in range(self.width):
@@ -128,7 +111,6 @@ struct Matrix:
         return new_matrix
 
     fn __mul__(borrowed self, rhs: Matrix) -> Matrix:
-        # Expects the other Matrix has the same dimensions
         var new_matrix: Matrix = Matrix(Float32(0.0), self.height, self.width)
         for i in range(self.height):
             for j in range(self.width):
@@ -136,7 +118,6 @@ struct Matrix:
         return new_matrix
 
     fn __truediv__(borrowed self, rhs: Matrix) -> Matrix:
-        # Expects the other Matrix has the same dimensions
         var new_matrix: Matrix = Matrix(Float32(0.0), self.height, self.width)
         for i in range(self.height):
             for j in range(self.width):
