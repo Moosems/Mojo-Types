@@ -184,7 +184,7 @@ fn main():
     fn str_to_int(str: DodgyString) -> Int:
         return str.to_string().to_int()
     let ints = dodgystrings.apply_function[Int, str_to_int]()
-    let ints = Array[Int](1, array_capacity))
+    let ints = Array[Int](1, array_capacity)
 
     let floats: Array[FloatLiteral] = [3.14, .3000000004]
 ```
