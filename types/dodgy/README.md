@@ -36,6 +36,16 @@ Constructs a new `DodgyString` from a `StringLiteral`.
 ##### **Returns:**
  - `DodgyString`: The new `DodgyString`
 
+#### `init`
+> `fn __init__(str: String) -> DodgyString:`
+Constructs a new `DodgyString` from a `String`
+
+##### **Args:**
+ - str (`String`): The string to construct the `DodgyString` from
+
+##### **Returns:**
+ - `DodgyString`: The new `DodgyString`
+
 #### `to_string`
 > `fn to_string(self) -> String:`
 Converts the `DodgyString` to a `String`.
