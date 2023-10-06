@@ -28,9 +28,10 @@ jobs:
     - name: Create package
       run: mojo package types -o types.mojopkg
 
-    - name: Upload package
-      uses: actions/upload-artifact@v3
+    - name: Upload package to release
+      uses: svenstaro/upload-release-action@v2
       with:
-        name: types.mojopkg
-        path: ${{ github.workspace }}/types.mojopkg
-        release: ${{ github.ref }}
+        file: types.mojopkg
+        asset_name: types.mojopkg
+        tag: ${{ github.ref }}
+        
