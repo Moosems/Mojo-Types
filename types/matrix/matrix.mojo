@@ -1,7 +1,7 @@
 from memory.unsafe import Pointer
 
 struct Matrix:
-    """Simple 2D Matrix that uses Float32"""
+    """Simple 2D Matrix that uses Float32."""
     # Expects when doing math with other Matrices that they all have the same dimensions
     var data: Pointer[Float32]
     var height: Int
