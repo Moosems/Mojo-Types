@@ -33,3 +33,4 @@ jobs:
       with:
         name: types.mojopkg
         path: ${{ github.workspace }}/types.mojopkg
+        release: ${{ github.ref }}
