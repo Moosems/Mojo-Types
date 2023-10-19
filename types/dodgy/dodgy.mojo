@@ -1,4 +1,4 @@
-from memory import memcpy
+from memory import memcpy, memset_zero
 
 
 @value
@@ -28,3 +28,13 @@ struct DodgyString:
         memcpy(ptr, self.data, self.len)
 
         return String(ptr, self.len)
+
+    fn to_string_ref(self) -> StringRef:
+        let ptr = Pointer[Int8]().alloc(self.len + 1)
+
+        memcpy(ptr, self.data.bitcast[Int8](), self.len)
+        memset_zero(ptr.offset(self.len), 1)
+
+        return StringRef(
+            ptr.bitcast[__mlir_type.`!pop.scalar<si8>`]().address, self.len
+        )
