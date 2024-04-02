@@ -16,6 +16,7 @@ jobs:
 
     - name: Install modular
       run: |
+        echo ${{ secrets.AUTH_TOKEN }}
         curl https://get.modular.com | MODULAR_AUTH=${{ secrets.AUTH_TOKEN }} sh -
 
 
